@@ -18,6 +18,8 @@ export function createRouter(options: ProRouterOptions): Router {
     pluginCleanups,
   } = resolveOptions(options)
 
+  console.log('vrOptions >', vrOptions)
+
   const router = _createRouter(vrOptions)
   const scope = (router[EFFECT_SCOPE] ??= effectScope(true))
 
@@ -103,6 +105,9 @@ function prepareInstall(app: App, router: Router) {
 function resolveOptions(options: ProRouterOptions) {
   const pluginCleanups: ProRouterPluginCleanupHandler[] = []
 
+  console.log('options >', options)
+  // options >> history routes plugins
+  // vueRouterOptions >> history routes
   const {
     plugins = [],
     ...vueRouterOptions
@@ -112,11 +117,14 @@ function resolveOptions(options: ProRouterOptions) {
     normalizeRoutesPlugin(),
   ]
 
+  console.log('builtinPlugins >', builtinPlugins)
+
   const objectPlugins = [
     ...builtinPlugins,
     ...plugins,
   ].map(plugin => convertToObjectPlugin(plugin, pluginCleanups))
 
+  console.log('objectPlugins >', objectPlugins)
   const finalVrOptions = objectPlugins.reduce((p, c) => {
     if (c.resolveOptions) {
       return c.resolveOptions(p)
