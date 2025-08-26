@@ -52,6 +52,7 @@ export function normalizeRoutesPlugin(): ProRouterPlugin {
 function normalizeRoutes(routes: RouteRecordRaw[], parents: RouteRecordRaw[] = []) {
   return routes.map((route) => {
     const routeName = ensureRouteName(route)
+    console.log('routeName >>', routeName)
     const newRoute: RouteRecordRaw = {
       ...route,
       name: routeName,
@@ -73,6 +74,7 @@ function normalizeRouteResolvedComponent(
 ) {
   const currentRoute = route.matched[route.matched.length - 1]
   const currentRouteComponent = currentRoute?.components?.[namespace]
+  console.log('currentRouteComponent >>', currentRouteComponent)
   if (!currentRouteComponent) {
     return
   }
