@@ -431,11 +431,16 @@ const accessRoutes: RouteRecordRaw[] = [
  * 页面组件映射，后端权限模式下会使用该数据
  */
 const matched = import.meta.glob('@/views/**/*.vue')
+// console.log('matched', matched)
 const pageMap = Object.entries(matched).reduce<Record<string, Component>>((p, [path, value]) => {
+  // console.log('path', path)
+  // console.log('value', value)
   const finalPath = `/${path.split('/').slice(3).join('/')}`
+  // console.log('finalPath', finalPath)
   p[finalPath] = value
   return p
 }, {})
+// console.log('pageMap', pageMap)
 
 export {
   accessRoutes,

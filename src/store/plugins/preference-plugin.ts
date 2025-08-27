@@ -41,6 +41,12 @@ export function preferencePlugin({ pinia, options, store, app }: PiniaPluginCont
   if (options.preference) {
     const { pick } = options.preference
     const [keys, prefixPath] = pick
+    // console.log('prefixPath >>', prefixPath)
+    // console.log('keys >>', keys)
+    const storeMap = (pinia as any)._s as Map<string, Store>
+    console.log('storeMap >>', storeMap)
+    console.log('store.$id >>', store.$id)
+    // console.log('pinia.s >>', (pinia)._s)
     keys.forEach((key) => {
       if (!has(store, key)) {
         return
