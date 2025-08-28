@@ -20,7 +20,7 @@ const {
 } = router.visitedRoutesPlugin
 
 const {
-  tabsTheme,
+  tabsMode,
 } = storeToRefs(useLayoutStore())
 
 const {
@@ -90,7 +90,7 @@ watch(
     <div
       ref="tabsRef"
       class="tabs"
-      :class="[`tabs--${tabsTheme}-theme`]"
+      :class="[`tabs--${tabsMode}-theme`]"
     >
       <transition-group
         leave-to-class="translate-x--5 scale-95  opacity-0"

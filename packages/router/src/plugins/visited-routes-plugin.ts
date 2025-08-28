@@ -305,6 +305,6 @@ export function visitedRoutesPlugin(): ProRouterPlugin {
   }
 }
 
-function isEqualRoute(a: RouteLocationNormalized, b: RouteLocationNormalized) {
+export function isEqualRoute(a: RouteLocationNormalized, b: RouteLocationNormalized) {
   return a.path === b.path
 }

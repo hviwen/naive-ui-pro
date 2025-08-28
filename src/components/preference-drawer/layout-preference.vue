@@ -8,15 +8,16 @@ import { useLayoutStore } from '@/store/use-layout-store'
 const {
   mode,
   showNav,
+  tabsMode,
   showLogo,
   navFixed,
   navHeight,
   collapsed,
   showTabbar,
   showFooter,
+  tabsPersist,
   showSidebar,
   footerFixed,
-  tabsTheme,
   footerHeight,
   tabbarHeight,
   sidebarWidth,
@@ -24,7 +25,7 @@ const {
   sidebarCollapsedShowMenuTitle,
 } = storeToRefs(useLayoutStore())
 
-const tabsThemeOptions = computed(() => [
+const tabsModeOptions = computed(() => [
   { label: $t('common.preference.layout.chrome'), value: 'chrome' },
   { label: $t('common.preference.layout.card'), value: 'card' },
 ])
@@ -109,6 +110,10 @@ const layoutOptions = computed<Array<{ label: string, value: ProLayoutMode }>>((
         <n-switch v-model:value="showTabbar" />
       </div>
       <div class="preference-item">
+        <span>{{ $t('common.preference.layout.tabsPersist') }}</span>
+        <n-switch v-model:value="tabsPersist" />
+      </div>
+      <div class="preference-item">
         <span>{{ $t('common.preference.layout.tabbarHeight') }}</span>
         <n-input-number
           v-model:value="tabbarHeight"
@@ -116,11 +121,11 @@ const layoutOptions = computed<Array<{ label: string, value: ProLayoutMode }>>((
         />
       </div>
       <div class="preference-item">
-        <span>{{ $t('common.preference.layout.tabbarTheme') }}</span>
+        <span>{{ $t('common.preference.layout.tabsMode') }}</span>
         <n-select
-          v-model:value="tabsTheme"
+          v-model:value="tabsMode"
           class="w-120px"
-          :options="tabsThemeOptions"
+          :options="tabsModeOptions"
         />
       </div>
     </n-flex>

@@ -73,7 +73,11 @@ export const preferenceConfig = {
     /**
      * 标签页主题
      */
-    tabsTheme: 'chrome',
+    tabsMode: 'chrome',
+    /**
+     * 标签页是否持久化
+     */
+    tabsPersist: true,
     /**
      * 侧边栏折叠后的宽度
      */
